@@ -358,7 +358,7 @@ Reveal.initialize({
 		// Syntax highlight for <code> elements
 		{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 
-		// Zoom in and out with Alt+click
+		// Zoom in and out with Alt+click, can also be done with the 'Z'-key to map your Logitech Spotlight on, for example.
 		{ src: 'plugin/zoom-js/zoom.js', async: true },
 
 		// Speaker notes

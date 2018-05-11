@@ -285,4 +285,31 @@ var zoom = (function(){
 })();
 
 
+var bbox_elm_below_mouse; // keeps track of the mouselocation
 
+(function(){
+document.querySelector( '.reveal .slides' ).addEventListener('mousemove', function(event){
+    bbox_elm_below_mouse = event.target;
+    })
+})();  // Update the global var any time the mouse moves.
+
+function initiateZoom(){
+    // based on the function on the function at the top in reveal.js's modification to zoom.js
+    var isEnabled = true;
+    var zoomPadding = 20;
+    var revealScale = Reveal.getScale();
+
+    if( isEnabled ) {
+        var bounds = bbox_elm_below_mouse.getBoundingClientRect();
+        zoom.to({
+            x: ( bounds.left * revealScale ) - zoomPadding,
+            y: ( bounds.top * revealScale ) - zoomPadding,
+            width: ( bounds.width * revealScale ) + ( zoomPadding * 2 ),
+            height: ( bounds.height * revealScale ) + ( zoomPadding * 2 ),
+            pan: false
+        });
+    }
+
+    Reveal.addEventListener( 'overviewshown', function() { isEnabled = false; } );
+    Reveal.addEventListener( 'overviewhidden', function() { isEnabled = true; } );
+};

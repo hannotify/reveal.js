@@ -4374,6 +4374,8 @@
 				case 70: enterFullscreen(); break;
 				// a
 				case 65: if ( config.autoSlideStoppable ) toggleAutoSlide( autoSlideWasPaused ); break;
+            	// letter "z"
+            	case 90: initiateZoom(); break;				
 				default:
 					triggered = false;
 			}
